@@ -7,10 +7,48 @@ name = "ai-operations-assistant"
 version = "0.1.0"
 description = "Enterprise AI email operations assistant foundation"
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "alembic>=1.14,<2",
+    "boto3>=1.35,<2",
+    "deepagents>=0.1,<1",
+    "fastapi>=0.115,<1",
+    "langgraph>=1,<2",
+    "opentelemetry-api>=1.29,<2",
+    "opentelemetry-sdk>=1.29,<2",
+    "psycopg[binary]>=3.2,<4",
+    "pydantic>=2.10,<3",
+    "pydantic-settings>=2.6,<3",
+    "redis>=5,<6",
+    "sqlalchemy>=2.0,<3",
+]
 
 [dependency-groups]
-dev = ["pytest>=8,<9"]
+dev = [
+    "cyclonedx-bom>=7,<8",
+    "mypy>=1.14,<2",
+    "pip-audit>=2.7,<3",
+    "pytest-cov>=5,<6",
+    "pytest>=8,<9",
+    "ruff>=0.9,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+check_untyped_defs = true
+disallow_untyped_defs = true
 
 [tool.uv]
 package = false
