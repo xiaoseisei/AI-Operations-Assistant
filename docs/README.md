@@ -21,6 +21,7 @@
 | 004 | [架构决策记录](04-架构决策记录.md) | `ADR_REVIEW_REQUIRED` | 技术/安全/运维 | ADR-001–008 |
 | 005 | [数据分类与威胁模型](05-数据分类与威胁模型.md) | `SECURITY_REVIEW_REQUIRED` | 安全/技术/运维 | 四级分类 + STRIDE |
 | 007 | [开发环境基线](06-开发环境基线.md) | `ENVIRONMENT_BASELINE_REVIEW_REQUIRED` | 技术/交付 | Python/uv/Node/Docker/离线检查 |
+| 008 | [仓库骨架说明](08-仓库骨架说明.md) | `SKELETON_REVIEW_REQUIRED` | 技术 | 分层目录、接口和边界检查 |
 
 ## 文档关系
 
