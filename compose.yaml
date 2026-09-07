@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:16.4
+    image: postgres@sha256:e62fbf9d3e2b49816a32c400ed2dba83e3b361e6833e624024309c35d334b412
     environment:
       POSTGRES_DB: ai_ops
       POSTGRES_USER: ai_ops
@@ -14,7 +14,7 @@ services:
       retries: 5
 
   redis:
-    image: redis:7.4.1
+    image: redis@sha256:bb142a9c18ac18a16713c1491d779697b4e107c22a97266616099d288237ef47
     volumes:
       - redis_data:/data
     healthcheck:
@@ -24,7 +24,7 @@ services:
       retries: 5
 
   minio:
-    image: minio/minio:RELEASE.2024-10-13T13-34-11Z
+    image: minio/minio@sha256:9535594ad4122b7a78c6632788a989b96d9199b483d3bd71a5ceae73a922cdfa
     environment:
       MINIO_ROOT_USER: minio-local-user
       MINIO_ROOT_PASSWORD: minio-local-password

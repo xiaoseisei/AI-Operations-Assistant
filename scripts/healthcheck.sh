@@ -34,7 +34,10 @@ PY
 echo "PASS python=$python_version"
 echo "PASS uv=$uv_version"
 
-node_version="$(node --version 2>/dev/null || true)"
+node_command="node"
+local_node="$script_root/../.runtime/tools/node20/node"
+if [[ -x "$local_node" ]]; then node_command="$local_node"; fi
+node_version="$("$node_command" --version 2>/dev/null || true)"
 if [[ "$node_version" =~ ^v20\. ]]; then echo "PASS node=$node_version"; else echo "WARN Node.js 20 LTS is not available; continuing in offline mode."; fi
 
 docker_version="$(docker --version 2>/dev/null || true)"

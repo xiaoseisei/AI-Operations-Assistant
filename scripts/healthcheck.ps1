@@ -48,7 +48,10 @@ if ($fixture.mode -ne 'offline' -or $fixture.database -ne 'sqlite' -or $fixture.
 Write-Output "PASS python=$pythonVersion command=$pythonCommand"
 Write-Output "PASS uv=$uvVersion"
 
-$nodeVersion = Get-ToolVersion 'node' @('--version')
+$nodeCommand = 'node'
+$localNode = Join-Path $scriptRoot '..\.runtime\tools\node20\node.exe'
+if (Test-Path -LiteralPath $localNode) { $nodeCommand = $localNode }
+$nodeVersion = Get-ToolVersion $nodeCommand @('--version')
 if ($nodeVersion -and $nodeVersion -match '^v20\.') { Write-Output "PASS node=$nodeVersion" }
 else { Write-Warning 'Node.js 20 LTS is not available; continuing in offline mode.' }
 
