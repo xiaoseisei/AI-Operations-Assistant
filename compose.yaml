@@ -4,7 +4,7 @@ services:
     environment:
       POSTGRES_DB: ai_ops
       POSTGRES_USER: ai_ops
-      POSTGRES_PASSWORD: local-only-not-secret
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-only-not-secret}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -26,8 +26,8 @@ services:
   minio:
     image: minio/minio@sha256:9535594ad4122b7a78c6632788a989b96d9199b483d3bd71a5ceae73a922cdfa
     environment:
-      MINIO_ROOT_USER: minio-local-user
-      MINIO_ROOT_PASSWORD: minio-local-password
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minio-local-user}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minio-local-password}
     command: ["server", "/data"]
     volumes:
       - minio_data:/data

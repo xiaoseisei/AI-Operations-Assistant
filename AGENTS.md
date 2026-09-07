@@ -35,6 +35,10 @@ Step 008 skeleton validation: `python scripts/check_skeleton.py`. Provider SDK i
 
 Step 009 dependency and quality checks: `uv lock --check`, `uv sync --locked --dev`, `uv run ruff check src tests scripts`, `uv run mypy src`, `uv run pytest -q`, `uv run pip-audit`, and `pwsh -NoProfile -File scripts/generate_sbom.ps1`. Regenerate `sbom/cyclonedx-python.json` whenever `uv.lock` changes.
 
+Step 010 configuration self-check: `uv run python scripts/config_check.py`. Offline mode must use Mock adapters and need no secrets; Real mode must fail closed when Gmail, Feishu, or LLM secrets are missing. Never print `SecretStr` values.
+
+Step 010 acceptance evidence is recorded in `docs/13-Step010验收记录.md`; use `uv run --locked pytest tests/unit/test_settings.py -q` for configuration tests.
+
 ## Coding Style & Naming Conventions
 
 Use Markdown with concise headings, tables, fenced code blocks, and Mermaid diagrams where a flow is clearer visually. Use UTF-8, no trailing whitespace, and stable identifiers: `TASK-001`, `UAT-H-001`, `UAT-E-001`, `ADR-001`, and `T-001`. Numbered Chinese filenames should remain stable once referenced. Keep policy terms and state names exact, such as `PENDING_APPROVAL`, `HUMAN_REVIEW`, `SEND_UNKNOWN`, and `QUARANTINED`.
