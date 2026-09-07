@@ -6,3 +6,7 @@ services:
     volumes:
       - .:/app:ro
       - app_runtime:/app/.runtime
+
+networks:
+  backend:
+    driver: bridge

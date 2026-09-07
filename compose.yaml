@@ -12,6 +12,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+    networks: [backend]
 
   redis:
     image: redis@sha256:bb142a9c18ac18a16713c1491d779697b4e107c22a97266616099d288237ef47
@@ -22,6 +23,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+    networks: [backend]
 
   minio:
     image: minio/minio@sha256:9535594ad4122b7a78c6632788a989b96d9199b483d3bd71a5ceae73a922cdfa
@@ -36,6 +38,7 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+    networks: [backend]
 
   healthcheck:
     image: python:3.12-slim
@@ -48,6 +51,11 @@ services:
       - .:/app:ro
       - app_runtime:/app/.runtime
     command: ["python", "-c", "import json; json.load(open('/app/scripts/healthcheck-fixture.json')); print('HEALTHCHECK_PASS mode=offline database=sqlite adapter=mock')"]
+    networks: [backend]
+
+networks:
+  backend:
+    driver: bridge
 
 volumes:
   app_runtime:

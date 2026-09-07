@@ -14,7 +14,7 @@ This repository is currently documentation-first. All project materials live und
 - `deploy/` contains deployment materials; `scripts/check_skeleton.py` validates Step 008 boundaries.
 - `sbom/` contains the generated CycloneDX dependency inventory; `scripts/generate_sbom.ps1` and `scripts/generate_sbom.sh` regenerate it.
 
-The repository now has a minimal `pyproject.toml` environment baseline and a Step 008 package skeleton, but provider implementations and business workflows are not present yet. Keep adapters, workflow code, persistence, and tests in clearly separated directories and update this guide as implementation grows.
+The repository now has a minimal `pyproject.toml` environment baseline, a Step 008 package skeleton, domain schemas, and an Alembic SQLite baseline. Provider implementations and business workflows are not present yet. Keep adapters, workflow code, persistence, and tests in clearly separated directories and update this guide as implementation grows.
 
 ## Build, Test, and Development Commands
 
@@ -38,6 +38,10 @@ Step 009 dependency and quality checks: `uv lock --check`, `uv sync --locked --d
 Step 010 configuration self-check: `uv run python scripts/config_check.py`. Offline mode must use Mock adapters and need no secrets; Real mode must fail closed when Gmail, Feishu, or LLM secrets are missing. Never print `SecretStr` values.
 
 Step 010 acceptance evidence is recorded in `docs/13-Step010验收记录.md`; use `uv run --locked pytest tests/unit/test_settings.py -q` for configuration tests.
+
+Steps 011–015 checks: `uv run --locked python scripts/check_secrets.py`, `uv run --locked python scripts/check_migrations.py`, `uv run --locked python scripts/infra_check.py`, `uv run --locked python scripts/run_demo.py --fixture fixtures`, and `uv run --locked pytest -q`. Demo data is synthetic and offline-only.
+
+Alembic checks use `uv run --locked alembic upgrade head`, `alembic current`, repeated `upgrade head`, and `alembic downgrade base`; domain schemas are in `src/ai_ops/domain/schemas.py` and database models in `src/ai_ops/infrastructure/db/`.
 
 ## Coding Style & Naming Conventions
 

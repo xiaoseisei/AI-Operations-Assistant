@@ -50,5 +50,8 @@ python_version = "3.12"
 check_untyped_defs = true
 disallow_untyped_defs = true
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.uv]
 package = false

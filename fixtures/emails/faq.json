@@ -1,0 +1,10 @@
+{
+  "fixture_id": "email-faq-demo-001",
+  "tenant_id": "tenant-demo-a",
+  "thread_id": "thread-demo-faq",
+  "event_id": "event-demo-faq-001",
+  "subject": "Product feature question",
+  "body": "Can the product export a weekly summary?",
+  "risk": "P2",
+  "expected_terminal": "PENDING_APPROVAL"
+}

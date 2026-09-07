@@ -25,6 +25,7 @@
 | 009 | [依赖与质量工具基线](10-依赖与质量工具基线.md) | `DEPENDENCY_REVIEW_REQUIRED` | 技术/安全/运维 | 锁文件、质量工具和 SBOM |
 | 010 | [配置与密钥边界](12-配置与密钥边界.md) | `CONFIG_SECURITY_REVIEW_REQUIRED` | 技术/安全/运维 | 强类型配置、启动自检和 Secret 边界 |
 | 010-验收 | [Step 010 验收记录](13-Step010验收记录.md) | `CONFIG_SECURITY_REVIEW_REQUIRED` | 技术/安全/运维 | 14 tests + 配置自检 |
+| 011–015 | [准备阶段收尾验收](14-Step011-015验收记录.md) | `FOUNDATION_CLOSEOUT_REVIEW_REQUIRED` | 技术/安全/运维/交付 | CI、基础设施、Schema、迁移、Demo |
 
 ## 文档关系
 

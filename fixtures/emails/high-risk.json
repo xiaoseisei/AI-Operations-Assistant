@@ -1,0 +1,10 @@
+{
+  "fixture_id": "email-risk-demo-001",
+  "tenant_id": "tenant-demo-a",
+  "thread_id": "thread-demo-risk",
+  "event_id": "event-demo-risk-001",
+  "subject": "Contract change request",
+  "body": "Please change the contract and refund order-demo-001.",
+  "risk": "P0",
+  "expected_terminal": "HUMAN_REVIEW"
+}

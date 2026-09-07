@@ -1,0 +1,8 @@
+{
+  "email-faq-demo-001": "PENDING_APPROVAL",
+  "email-risk-demo-001": "HUMAN_REVIEW",
+  "email-injection-demo-001": "QUARANTINED",
+  "email-timeout-demo-001": "SEND_UNKNOWN",
+  "email-duplicate-demo-001": "DUPLICATE_IGNORED",
+  "email-followup-demo-001": "INVALIDATED"
+}

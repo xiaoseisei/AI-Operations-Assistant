@@ -1,0 +1,24 @@
+name: quality-gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.7"
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+      - run: uv sync --locked --dev
+      - run: uv run ruff check src tests scripts
+      - run: uv run mypy src
+      - run: uv run pytest -q
+      - run: uv run pip-audit --progress-spinner off
+      - run: uv run python scripts/check_secrets.py
+      - run: uv run python scripts/check_migrations.py
