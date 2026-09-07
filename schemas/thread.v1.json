@@ -1,0 +1,56 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "internal_id": {
+      "format": "uuid",
+      "title": "Internal Id",
+      "type": "string"
+    },
+    "tenant_id": {
+      "format": "uuid",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "mailbox_id": {
+      "format": "uuid",
+      "title": "Mailbox Id",
+      "type": "string"
+    },
+    "provider_id": {
+      "title": "Provider Id",
+      "type": "string"
+    },
+    "status": {
+      "default": "open",
+      "enum": [
+        "open",
+        "closed",
+        "paused"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "last_inbound_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Inbound At"
+    }
+  },
+  "required": [
+    "internal_id",
+    "tenant_id",
+    "mailbox_id",
+    "provider_id"
+  ],
+  "title": "Thread",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

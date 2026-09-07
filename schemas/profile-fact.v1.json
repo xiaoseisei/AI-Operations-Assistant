@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "internal_id": {
+      "format": "uuid",
+      "title": "Internal Id",
+      "type": "string"
+    },
+    "tenant_id": {
+      "format": "uuid",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "subject_key": {
+      "title": "Subject Key",
+      "type": "string"
+    },
+    "fact_type": {
+      "enum": [
+        "fact",
+        "inference",
+        "hypothesis"
+      ],
+      "title": "Fact Type",
+      "type": "string"
+    },
+    "value": {
+      "title": "Value",
+      "type": "string"
+    },
+    "source_message_id": {
+      "format": "uuid",
+      "title": "Source Message Id",
+      "type": "string"
+    },
+    "evidence_span": {
+      "title": "Evidence Span",
+      "type": "string"
+    },
+    "confidence": {
+      "maximum": 1,
+      "minimum": 0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "observed_at": {
+      "format": "date-time",
+      "title": "Observed At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "internal_id",
+    "tenant_id",
+    "subject_key",
+    "fact_type",
+    "value",
+    "source_message_id",
+    "evidence_span",
+    "confidence",
+    "observed_at"
+  ],
+  "title": "ProfileFact",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

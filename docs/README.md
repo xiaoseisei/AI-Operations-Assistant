@@ -26,6 +26,10 @@
 | 010 | [配置与密钥边界](12-配置与密钥边界.md) | `CONFIG_SECURITY_REVIEW_REQUIRED` | 技术/安全/运维 | 强类型配置、启动自检和 Secret 边界 |
 | 010-验收 | [Step 010 验收记录](13-Step010验收记录.md) | `CONFIG_SECURITY_REVIEW_REQUIRED` | 技术/安全/运维 | 14 tests + 配置自检 |
 | 011–015 | [准备阶段收尾验收](14-Step011-015验收记录.md) | `FOUNDATION_CLOSEOUT_REVIEW_REQUIRED` | 技术/安全/运维/交付 | CI、基础设施、Schema、迁移、Demo |
+| 013 | [领域 Schema](../schemas/) | `SCHEMA_REVIEW_REQUIRED` | 技术/安全 | Pydantic 模型、JSON Schema 和兼容测试 |
+| 015 | [Demo 运行手册](demo-runbook.md) | `DEMO_REVIEW_REQUIRED` | 交付/QA | 全部合成 fixture 验证 |
+
+Step 011–015 的本地实现和等价门禁已完成；真实 CI Runner、Docker 容器启动/重启持久化和人工审批仍需单独完成。当前入口状态保持 review-required，不把本地静态/离线检查解释为生产验收。
 
 ## 文档关系
 

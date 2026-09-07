@@ -1,0 +1,59 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "internal_id": {
+      "format": "uuid",
+      "title": "Internal Id",
+      "type": "string"
+    },
+    "tenant_id": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tenant Id"
+    },
+    "document_id": {
+      "title": "Document Id",
+      "type": "string"
+    },
+    "version": {
+      "title": "Version",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "blob_ref": {
+      "title": "Blob Ref",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "staging",
+        "active",
+        "archived"
+      ],
+      "title": "Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "internal_id",
+    "document_id",
+    "version",
+    "title",
+    "blob_ref",
+    "status"
+  ],
+  "title": "KnowledgeDocument",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

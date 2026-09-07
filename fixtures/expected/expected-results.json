@@ -1,6 +1,11 @@
 {
   "email-faq-demo-001": "PENDING_APPROVAL",
   "email-risk-demo-001": "HUMAN_REVIEW",
+  "email-address-demo-001": "PENDING_APPROVAL",
+  "email-multi-demo-001": "PENDING_APPROVAL",
+  "email-empty-demo-001": "HUMAN_REVIEW",
+  "email-html-demo-001": "PENDING_APPROVAL",
+  "email-attachment-demo-001": "PENDING_APPROVAL",
   "email-injection-demo-001": "QUARANTINED",
   "email-timeout-demo-001": "SEND_UNKNOWN",
   "email-duplicate-demo-001": "DUPLICATE_IGNORED",

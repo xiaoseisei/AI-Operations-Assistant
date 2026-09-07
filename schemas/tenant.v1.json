@@ -1,0 +1,49 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "internal_id": {
+      "format": "uuid",
+      "title": "Internal Id",
+      "type": "string"
+    },
+    "provider_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Provider Id"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "status": {
+      "default": "active",
+      "enum": [
+        "active",
+        "paused",
+        "suspended"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    }
+  },
+  "required": [
+    "internal_id",
+    "name",
+    "created_at"
+  ],
+  "title": "Tenant",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

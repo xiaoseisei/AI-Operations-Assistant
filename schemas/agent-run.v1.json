@@ -1,0 +1,70 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "internal_id": {
+      "format": "uuid",
+      "title": "Internal Id",
+      "type": "string"
+    },
+    "tenant_id": {
+      "format": "uuid",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "thread_id": {
+      "format": "uuid",
+      "title": "Thread Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "minimum": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "route": {
+      "title": "Route",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "running",
+        "pending_approval",
+        "completed",
+        "failed",
+        "quarantined"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "finished_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Finished At"
+    }
+  },
+  "required": [
+    "internal_id",
+    "tenant_id",
+    "thread_id",
+    "schema_version",
+    "route",
+    "status",
+    "started_at"
+  ],
+  "title": "AgentRun",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

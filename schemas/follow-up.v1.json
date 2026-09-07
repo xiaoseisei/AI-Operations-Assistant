@@ -1,0 +1,57 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "internal_id": {
+      "format": "uuid",
+      "title": "Internal Id",
+      "type": "string"
+    },
+    "tenant_id": {
+      "format": "uuid",
+      "title": "Tenant Id",
+      "type": "string"
+    },
+    "thread_id": {
+      "format": "uuid",
+      "title": "Thread Id",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "scheduled",
+        "invalidated",
+        "cancelled",
+        "sent"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "scheduled_at": {
+      "format": "date-time",
+      "title": "Scheduled At",
+      "type": "string"
+    },
+    "invalidation_reason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Invalidation Reason"
+    }
+  },
+  "required": [
+    "internal_id",
+    "tenant_id",
+    "thread_id",
+    "status",
+    "scheduled_at"
+  ],
+  "title": "FollowUp",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

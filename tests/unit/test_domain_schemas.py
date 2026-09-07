@@ -4,7 +4,7 @@ from uuid import uuid4
 import pytest
 from pydantic import ValidationError
 
-from ai_ops.domain.schemas import EventEnvelope, Message, Tenant
+from ai_ops.domain.schemas import EventEnvelope, Message, Tenant, export_json_schemas
 
 
 def test_domain_schema_accepts_valid_message():
@@ -37,7 +37,7 @@ def test_event_schema_version_is_positive():
             event_id="event-demo-002",
             provider_id="gmail-mock",
             tenant_id=uuid4(),
-            schema_version=0,
+            schema_version=-1,
             event_type="message.received",
             occurred_at=datetime.now(UTC),
             payload={},
@@ -55,3 +55,25 @@ def test_unmappable_event_can_be_quarantined_by_route():
         payload={"quarantine_reason": "unsupported provider"},
     )
     assert event.payload["quarantine_reason"]
+
+
+def test_legacy_event_version_is_explicitly_identified():
+    event = EventEnvelope(
+        event_id="event-demo-legacy",
+        provider_id="gmail-mock",
+        tenant_id=uuid4(),
+        schema_version=0,
+        event_type="message.received",
+        occurred_at=datetime.now(UTC),
+        payload={"legacy": True},
+    )
+
+    assert event.is_legacy is True
+
+
+def test_domain_json_schemas_are_exported(tmp_path):
+    export_json_schemas(str(tmp_path))
+
+    schema = (tmp_path / "event-envelope.v1.json").read_text(encoding="utf-8")
+    assert '"$schema": "https://json-schema.org/draft/2020-12/schema"' in schema
+    assert '"schema_version"' in schema

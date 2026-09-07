@@ -2,11 +2,14 @@
 
 from __future__ import annotations
 
+import json
 from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
+
+CURRENT_EVENT_SCHEMA_VERSION = 1
 
 
 class StrictSchema(BaseModel):
@@ -117,7 +120,46 @@ class EventEnvelope(StrictSchema):
     provider_id: str
     tenant_id: UUID
     thread_id: UUID | None = None
-    schema_version: int = Field(ge=1)
+    schema_version: int = Field(default=CURRENT_EVENT_SCHEMA_VERSION, ge=0)
     event_type: str
     occurred_at: datetime
     payload: dict[str, Any]
+
+    @property
+    def is_legacy(self) -> bool:
+        """Identify an older supported event version for an explicit adapter path."""
+
+        return self.schema_version < CURRENT_EVENT_SCHEMA_VERSION
+
+
+def export_json_schemas(output_dir: str) -> None:
+    """Export stable JSON Schemas for all public domain contracts."""
+
+    from pathlib import Path
+
+    destination = Path(output_dir)
+    destination.mkdir(parents=True, exist_ok=True)
+    models: dict[str, type[BaseModel]] = {
+        "tenant.v1.json": Tenant,
+        "mailbox.v1.json": Mailbox,
+        "thread.v1.json": Thread,
+        "message.v1.json": Message,
+        "draft.v1.json": Draft,
+        "approval.v1.json": Approval,
+        "follow-up.v1.json": FollowUp,
+        "profile-fact.v1.json": ProfileFact,
+        "knowledge-document.v1.json": KnowledgeDocument,
+        "agent-run.v1.json": AgentRun,
+        "event-envelope.v1.json": EventEnvelope,
+    }
+    for filename, model in models.items():
+        (destination / filename).write_text(
+            json.dumps(
+                model.model_json_schema()
+                | {"$schema": "https://json-schema.org/draft/2020-12/schema"},
+                ensure_ascii=False,
+                indent=2,
+            )
+            + "\n",
+            encoding="utf-8",
+        )

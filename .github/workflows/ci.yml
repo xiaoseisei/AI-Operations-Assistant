@@ -22,3 +22,8 @@ jobs:
       - run: uv run pip-audit --progress-spinner off
       - run: uv run python scripts/check_secrets.py
       - run: uv run python scripts/check_migrations.py
+      - run: uv run python scripts/infra_check.py
+      - run: uv run alembic upgrade head
+      - run: uv run alembic downgrade base
+      - run: uv run python scripts/export_schemas.py
+      - run: uv run python scripts/run_demo.py --fixture fixtures
