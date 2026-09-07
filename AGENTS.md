@@ -29,7 +29,7 @@ docker compose -f compose.yaml -f compose.dev.yaml config
 
 For the Step 1–5 acceptance suite, follow the PowerShell checks in `docs/superpowers/plans/2026-09-04-email-ops-foundation-plan.md`; they verify required links, task IDs, UAT counts, ADRs, threats, and secret-like patterns.
 
-Step 007 details, version floors, offline fallback, and path rules are documented in `docs/06-开发环境基线.md`.
+Step 007 details, version floors, offline fallback, and path rules are documented in `docs/06-开发环境基线.md`. Windows developers can install the verified local Node.js 20 tool with `pwsh -NoProfile -File scripts/install_node20.ps1`.
 
 Step 008 skeleton validation: `python scripts/check_skeleton.py`. Provider SDK imports belong in `src/ai_ops/connectors/`; Graph and domain modules must remain provider-neutral.
 
