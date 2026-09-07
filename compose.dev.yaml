@@ -1,0 +1,8 @@
+services:
+  healthcheck:
+    environment:
+      APP_MODE: offline
+      SQLITE_PATH: /app/.runtime/app.sqlite3
+    volumes:
+      - .:/app:ro
+      - app_runtime:/app/.runtime

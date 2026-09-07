@@ -1,0 +1,7 @@
+{
+  "tenant": "tenant-demo-a",
+  "thread": "thread-demo-health",
+  "mode": "offline",
+  "database": "sqlite",
+  "adapter": "mock"
+}
