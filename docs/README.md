@@ -22,6 +22,7 @@
 | 005 | [数据分类与威胁模型](05-数据分类与威胁模型.md) | `SECURITY_REVIEW_REQUIRED` | 安全/技术/运维 | 四级分类 + STRIDE |
 | 007 | [开发环境基线](06-开发环境基线.md) | `ENVIRONMENT_BASELINE_REVIEW_REQUIRED` | 技术/交付 | Python/uv/Node/Docker/离线检查 |
 | 008 | [仓库骨架说明](08-仓库骨架说明.md) | `SKELETON_REVIEW_REQUIRED` | 技术 | 分层目录、接口和边界检查 |
+| 009 | [依赖与质量工具基线](10-依赖与质量工具基线.md) | `DEPENDENCY_REVIEW_REQUIRED` | 技术/安全/运维 | 锁文件、质量工具和 SBOM |
 
 ## 文档关系
 

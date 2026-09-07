@@ -12,6 +12,7 @@ This repository is currently documentation-first. All project materials live und
 - `compose.yaml` and `compose.dev.yaml` define the optional container boundary.
 - `src/ai_ops/` contains the layered application package; `tests/` is split into unit, integration, contract, and fixture areas.
 - `deploy/` contains deployment materials; `scripts/check_skeleton.py` validates Step 008 boundaries.
+- `sbom/` contains the generated CycloneDX dependency inventory; `scripts/generate_sbom.ps1` and `scripts/generate_sbom.sh` regenerate it.
 
 The repository now has a minimal `pyproject.toml` environment baseline and a Step 008 package skeleton, but provider implementations and business workflows are not present yet. Keep adapters, workflow code, persistence, and tests in clearly separated directories and update this guide as implementation grows.
 
@@ -31,6 +32,8 @@ For the Step 1–5 acceptance suite, follow the PowerShell checks in `docs/super
 Step 007 details, version floors, offline fallback, and path rules are documented in `docs/06-开发环境基线.md`.
 
 Step 008 skeleton validation: `python scripts/check_skeleton.py`. Provider SDK imports belong in `src/ai_ops/connectors/`; Graph and domain modules must remain provider-neutral.
+
+Step 009 dependency and quality checks: `uv lock --check`, `uv sync --locked --dev`, `uv run ruff check src tests scripts`, `uv run mypy src`, `uv run pytest -q`, `uv run pip-audit`, and `pwsh -NoProfile -File scripts/generate_sbom.ps1`. Regenerate `sbom/cyclonedx-python.json` whenever `uv.lock` changes.
 
 ## Coding Style & Naming Conventions
 
